@@ -1,3 +1,224 @@
+  /* VARIABLES */
+:root {
+  --color-background: #121212;
+  --color-header: #1f1f1f;
+  --color-text: #ffffff;
+  --color-accent: #ff4c4c;
+  --color-accent-hover: #ff1c1c;
+  --font-family: 'Poppins', sans-serif;
+  --border-radius: 10px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --font-size-base: 16px;
+  --font-size-large: 1.8rem;
+  --font-size-medium: 1.2rem;
+  --font-size-small: 0.9rem;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: rgba(255, 235, 205, 0.486);
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}
+
+/* Header */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--color-header);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-medium);
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.search-bar input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  width: 250px;
+  outline: none;
+}
+
+/* Main Section */
+.main {
+  padding: 2rem;
+}
+
+/* Trending Movie Section */
+.trending-movie {
+  margin-bottom: 2rem;
+}
+
+.trending-movie h2 {
+  font-size: var(--font-size-large);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Contenedor de las películas en tendencia */
+.trending-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem; /* Más espacio entre tarjetas */
+}
+
+/* Estilos para cada película */
+.movie-card {
+  background-color: var(--color-header);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.3s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* Contenedor de la información */
+.movie-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-info h3 {
+  font-size: var(--font-size-medium);
+  margin-bottom: 0.5rem;
+}
+
+.movie-info p {
+  font-size: var(--font-size-small);
+  color: #cccccc;
+  margin-bottom: 1rem;
+  text-align: justify;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+/* Botón siempre al final */
+.movie-card .btn {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-medium);
+}
+
+.movie-card .btn:hover {
+  background-color: var(--color-accent-hover);
+}
+/* Sección de Categorías */
+.categories {
+  padding: 2rem;
+  background-color: var(--color-background);
+}
+
+.categories h2 {
+  font-size: var(--font-size-large);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Lista de Categorías */
+.category-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Igual a tendencias */
+  gap: 1.5rem; /* Espaciado uniforme */
+  padding: 0;
+}
+
+/* Tarjetas de Categorías */
+.category-card {
+  background-color: var(--color-header);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* Añadimos animación */
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 120px;
+  margin: 0 auto;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+}
+
+/* Título de la categoría */
+.category-card h3 {
+  font-size: var(--font-size-medium);
+  color: var(--color-text);
+  margin: 0.5rem 0;
+}
+
+/* Imagen de fondo para categorías (opcional si necesitas imágenes en cada tarjeta) */
+.category-card::before {
+  content: '';
+  display: block;
+  background-color: var(--color-accent);
+  height: 100px;
+  width: 100%;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--color-header);
+  color: var(--color-text);
+  margin-top: 2rem;
 }
