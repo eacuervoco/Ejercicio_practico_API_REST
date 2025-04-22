@@ -1,81 +1,62 @@
+const api = axios.create({
+    baseURL:'https://api.themoviedb.org/3/',
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${API_KEY}`
+    }     
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Ejecutamos solo cuando el DOM esté completamente listo
+    getTrending_moviesPreview();
+    getGenre_movies();
+    
+});
+
+//Obtenemos las peliculas de tendencia y renderizamos.
 async function getTrending_moviesPreview( ) {
-    const url_API_Trending_movies = `https://api.themoviedb.org/3/trending/movie/day?language=es-ES`
+    const url_API_Trending_movies = 'trending/movie/day?language=es-ES'
     try {
-        const response = await fetch (url_API_Trending_movies, {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${API_KEY}` ,
-            }
-        })
-        const data = await response.json()
+        const response = await api.get (url_API_Trending_movies);        
+        const data = response.data;
         const movies = data.results;
-        console.log('Tendencias', {data, movies})
+        console.log('Tendencias', {data, movies});
 
-        // Seleccionamos el contenedor de las películas
-        const trendingPreviewmoviesCard = document.querySelector('.trending-container')
-        // Limpiamos el contenedor para evitar duplicados
-        trendingPreviewmoviesCard.innerHTML = '';
+        const trendingContainer = document.querySelector('.trending-container');
+        const movieTemplate = document.getElementById('movie-card-template');
+        if (!movieTemplate) {
+            console.error('Template de tarjeta de película no encontrado');
+            return;
+        }
+        //Limpiamos el contenedor de las tendencias
+        trendingContainer.innerHTML = '';
 
-        // Iteramos sobre las películas y las añadimos al contenedor
-        movies.forEach(movie => {  
-            // Creamos el contenedor de cada película , imagen, titulo         
-            const movieContainer = document.createElement('article')
-            movieContainer.classList.add('movie-card', 'trending');
+        movies.forEach(movie => {
+            const clone = movieTemplate.content.cloneNode(true);
 
-            const moviImg = document.createElement('img');
-            moviImg.classList.add('movie-img');
-            moviImg.setAttribute('alt', movie.title);
-            moviImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + movie.poster_path);
+            const img   = clone.querySelector('img');
+            const title = clone.querySelector('h3');
+            const desc  = clone.querySelector('p');
 
-            // Creamos el contenedor movieinfo
-            const movieInfo = document.createElement('div');
-            movieInfo.classList.add('movie-info');
+            img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+            img.alt = movie.title;
+            title.textContent = movie.title;
+            desc.textContent = movie.overview || 'Descripción no disponible';
 
-            const movieTitle = document.createElement('h3');
-            movieTitle.textContent = movie.title;
-
-            const moviDescription = document.createElement('p')
-            moviDescription.textContent = movie.overview;
-
-            const movieButton = document.createElement('button')
-            movieButton.classList.add('btn')
-            movieButton.textContent = 'Ver Ahora'
-
-            // Agregamos los elementos al contenedor de información
-            movieInfo.appendChild(movieTitle);
-            movieInfo.appendChild(moviDescription);
-            movieInfo.appendChild(movieButton);
-
-            // Combinamos todo en el contenedor principal de la película
-            movieContainer.appendChild(moviImg);
-            movieContainer.appendChild(movieInfo);
-
-
-            // Agregamos la película al contenedor principal
-            trendingPreviewmoviesCard.appendChild(movieContainer);
-
-            
+            trendingContainer.appendChild(clone);
         });
+
         
-    } catch (error)    {
+    } catch (error) {
         console.error('Error al obtener los datos de la API:', error);
     } 
 }
 
-getTrending_moviesPreview( )
-
 async function getGenre_movies() {
-    const url_API_Genre_movies = `https://api.themoviedb.org/3/genre/movie/list?language=es`;
-    try{
-        const response = await fetch (url_API_Genre_movies, {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${API_KEY}` ,
-            }
-        })
-        const data = await response.json()
+    const url_API_Genre_movies = 'genre/movie/list?language=es';
+    try{ 
+        const response = await api.get (url_API_Genre_movies);        
+        const data = response.data
         const categories = data.genres;
         console.log('Categorias', {data, categories})
 
@@ -103,14 +84,14 @@ async function getGenre_movies() {
             cardCategory.appendChild(nameCategory)            
             categoriesItems.appendChild(cardCategory)
             genreMoviescard.appendChild(categoriesItems)
-        });
-        
+        });     
         
     }
-    catch (error)    {
+    catch (error)  {
         console.error('Error al obtener los datos de la API:', error);
     }
     
 }
 
-getGenre_movies()
+// getTrending_moviesPreview( )
+// getGenre_movies()

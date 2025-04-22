@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raven_Movies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/app.css">
+</head>
+    <body>
+        <header id="header" class="header-container">
+          <div class="logo">
+            <h1> Raven Movies</h1>
+          </div>
+          <nav class="navbar" aria-label="Navegación principal">
+            <ul>
+             <li><a href="#" class="nav-link">Inicio</a></li>
+             <li><a href="#categorias" class="nav-link">Categorías</a></li> 
+             <li><a href="#favoritos" class="nav-link">Favoritas</a></li>
+          </ul>
+          </nav>
+          <form class="search-bar" role="search">
+            <label for="search" class="visually-hidden">Buscar películas</label>
+            <input type="text" placeholder="Buscar películas..." id="search" name="query">
+            <button type="submit" class="btn-search">Buscar</button>
+          </form>            
+        </header>
+
+  <main id="main" class="main">
+          <section class="trending-movie" aria-labelledby="trending-heading">
+              <h2 id="trending-heading">Tendencias</h2>
+                <div class="trending-container">
+                 <!-- Template para tarjetas de películas -->
+                 <template id="movie-card-template">
+                  <article class="movie-card trending">
+                   <img src="#" alt="Poster de la Pelicula">
+                   <div class="movie-info">
+                     <h3>Título de Película</h3>
+                     <p>Descripción breve de la película...</p>
+                     <button class="btn">Ver ahora</button>
+                    </div>
+                  </article>
+                 </template>
+              <!-- Más artículos -->
+              </div>
+          </section> 
+          
+          <section id="categories" class="categories" aria-labelledby="categories-heading">
+            <h2 id="categories-heading">Categorías</h2>
+            <ul class="category-list">
+              <!-- template de cada categoría será un <li> -->
+              <template id="category-card-template">
+                <li class="category-item">
+                  <article class="category-card">
+                      <h4>Acción</h4>
+                  </article>
+                </li>
+              </template>
+               <!-- Repite más categorías dinámicamente -->
+            </ul>
+          </section>  
+      
+          <section id="favoritos" class="favorites" aria-labelledby="favorites-heading">
+            <h2 id="favorites-heading">Mis Favoritas</h2>
+            <p>No has añadido películas a tu lista todavía.</p>
+          </section>
+  </main>
+
+  <footer class="footer">
+          <p>© 2025 Raven Movies. Todos los derechos reservados.</p>
+  </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./src/secret_api_key.js"></script>
+<script src="./src/navigation.js"></script> 
+<script src="./src/main.js"></script>
+
+</body>
+</html>

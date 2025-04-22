@@ -12,6 +12,28 @@
   --font-size-large: 1.8rem;
   --font-size-medium: 1.2rem;
   --font-size-small: 0.9rem;
+  /* Variables para los colores distintivos en las categorias*/
+  --color-category-1: #e73c3c; /* Rojo */
+  --color-category-2: #4caf50; /* Verde */
+  --color-category-3: #2196f3; /* Azul */
+  --color-category-4: #ff9800; /* Naranja */
+  --color-category-5: #9c27b0; /* Morado */
+  --color-category-6: #3f51b5; /* Indigo */
+  --color-category-0: #607d8b; /* Azul grisáceo */
+  --color-category-7: #795548; /* Marrón */ 
+  --color-category-8: #ffc107; /* Amarillo */
+  --color-category-9: #009688; /* Teal */
+  --color-category-10: #673ab7; /* Violeta */
+  --color-category-11: #f44336; /* Rojo claro */
+  --color-category-12: #8bc34a; /* Verde claro */
+  --color-category-13: #ffeb3b; /* Amarillo claro */
+  --color-category-14: #3f51b5; /* Azul oscuro */
+  --color-category-15: #9c27b0; /* Morado claro */
+  --color-category-16: #ff5722; /* Naranja claro */
+  --color-category-17: #607d8b; /* Azul grisáceo claro */
+  --color-category-18: #795548; /* Marrón claro */
+  --color-category-19: #ffc107; /* Amarillo claro */
+
 }
 
 /* Reset básico */
@@ -41,14 +63,16 @@ body {
   z-index: 1000;
 }
 
-.logo {
+.logo h1 {
   font-size: var(--font-size-large);
   font-weight: bold;
+  margin:0;
 }
 
-.navbar {
+.navbar ul {
   display: flex;
   gap: 1.5rem;
+  list-style: none;
 }
 
 .nav-link {
@@ -69,12 +93,23 @@ body {
   outline: none;
 }
 
+.btn-search {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
 /* Main Section */
 .main {
   padding: 2rem;
 }
 
-/* Trending Movie Section */
+/* Movie Section */
 .trending-movie {
   margin-bottom: 2rem;
 }
@@ -88,11 +123,11 @@ body {
 /* Contenedor de las películas en tendencia */
 .trending-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem; /* Más espacio entre tarjetas */
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.5rem; /* Espacio entre tarjetas */
 }
 
-/* Estilos para cada película */
+/* Estilos de tarjeta de cada película */
 .movie-card {
   background-color: var(--color-header);
   border-radius: var(--border-radius);
@@ -147,6 +182,7 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   font-size: var(--font-size-medium);
+  transition: background-color 0.3s;
 }
 
 .movie-card .btn:hover {
@@ -175,7 +211,6 @@ body {
 
 /* Tarjetas de Categorías */
 .category-card {
-  background-color: var(--color-header);
   border-radius: var(--border-radius);
   padding: 0.5rem;
   text-align: center;
@@ -184,35 +219,101 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 120px;
-  margin: 0 auto;
+ }
+
+ /* Colores distintivos para categorías usando nth-child como ejemplo */
+.category-list li:nth-child(1) .category-card {
+  background-color: var(--color-category-0);
 }
 
-.category-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+.category-list li:nth-child(2) .category-card {
+  background-color: var(--color-category-2);
 }
+
+.category-list li:nth-child(3) .category-card {
+  background-color: var(--color-category-3);
+}
+
+.category-list li:nth-child(4) .category-card {
+  background-color: var(--color-category-4);
+}
+
+.category-list li:nth-child(5) .category-card {
+  background-color: var(--color-category-5);
+}
+
+.category-list li:nth-child(6) .category-card {
+  background-color: var(--color-category-6);
+}
+.category-list li:nth-child(7) .category-card {
+  background-color: var(--color-category-7);
+}
+.category-list li:nth-child(8) .category-card {
+  background-color: var(--color-category-8);
+}
+.category-list li:nth-child(9) .category-card {
+  background-color: var(--color-category-9);
+}
+.category-list li:nth-child(10) .category-card {
+  background-color: var(--color-category-10);
+}
+.category-list li:nth-child(11) .category-card {
+  background-color: var(--color-category-11);
+}
+.category-list li:nth-child(12) .category-card {
+  background-color: var(--color-category-12);
+}
+
+.category-list li:nth-child(13) .category-card {
+  background-color: var(--color-category-13);
+}
+.category-list li:nth-child(14) .category-card {
+  background-color: var(--color-category-14);
+}
+.category-list li:nth-child(15) .category-card {
+  background-color: var(--color-category-15);
+}
+.category-list li:nth-child(16) .category-card {
+  background-color: var(--color-category-16);
+}
+.category-list li:nth-child(17) .category-card {
+  background-color: var(--color-category-17);
+}
+.category-list li:nth-child(18) .category-card {
+  background-color: var(--color-category-18);
+}
+.category-list li:nth-child(19) .category-card {
+  background-color: var(--color-category-19);
+}
+
 
 /* Título de la categoría */
-.category-card h3 {
+.category-card h4 {
   font-size: var(--font-size-medium);
   color: var(--color-text);
   margin: 0.5rem 0;
 }
 
-/* Imagen de fondo para categorías (opcional si necesitas imágenes en cada tarjeta) */
-.category-card::before {
-  content: '';
-  display: block;
-  background-color: var(--color-accent);
-  height: 100px;
-  width: 100%;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  margin-bottom: 1rem;
+/* Sección de Favoritas (en caso de desplegar tarjetas de películas favoritas) */
+.favorites {
+  padding: 2rem;
+  background-color: var(--color-background);
 }
 
+.favorites h2 {
+  font-size: var(--font-size-large);
+  margin-bottom: 1rem;
+  text-align: left;
+}
 
+/* Si en el futuro se muestran tarjetas de películas favoritas, se puede aplicar un grid similar */
+.favorites .favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
 
 /* Footer */
 .footer {
