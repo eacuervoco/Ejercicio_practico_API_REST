@@ -323,3 +323,7 @@ body {
   color: var(--color-text);
   margin-top: 2rem;
 }
+
+.inactive {
+  display: none;
+}

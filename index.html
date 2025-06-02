@@ -15,7 +15,7 @@
           <nav class="navbar" aria-label="Navegación principal">
             <ul>
              <li><a href="#" class="nav-link">Inicio</a></li>
-             <li><a href="#categorias" class="nav-link">Categorías</a></li> 
+             <li><a href="#categories" class="nav-link">Categorías</a></li> 
              <li><a href="#favoritos" class="nav-link">Favoritas</a></li>
           </ul>
           </nav>
@@ -29,18 +29,9 @@
   <main id="main" class="main">
           <section class="trending-movie" aria-labelledby="trending-heading">
               <h2 id="trending-heading">Tendencias</h2>
-                <div class="trending-container">
+                <div id="home-trending-container" class="trending-container">
                  <!-- Template para tarjetas de películas -->
-                 <template id="movie-card-template">
-                  <article class="movie-card trending">
-                   <img src="#" alt="Poster de la Pelicula">
-                   <div class="movie-info">
-                     <h3>Título de Película</h3>
-                     <p>Descripción breve de la película...</p>
-                     <button class="btn">Ver ahora</button>
-                    </div>
-                  </article>
-                 </template>
+
               <!-- Más artículos -->
               </div>
           </section> 
@@ -64,6 +55,33 @@
             <h2 id="favorites-heading">Mis Favoritas</h2>
             <p>No has añadido películas a tu lista todavía.</p>
           </section>
+
+          <section id="search-section" class="inactive">
+            <h2>Resultados de Búsquedas</h2>
+            <div id="search-results" class="trending-container"> </div>
+          </section>
+
+          <section id="trends-section" class="inactive">
+            <h2 id ="trends-title">Peliculas</h2>
+            <div id="trends-results" class="trending-container"> </div>
+          </section>
+
+          <section id="movie-details" class="inactive">
+            <h2>Detalle de la Película</h2>
+            <div id="movie-details-container" class="trending-container"> Cargando... </div>
+          </section>
+
+          <template id="movie-card-template">
+             <article class="movie-card trending">
+               <img src="#" alt="Poster de la Pelicula">
+                 <div class="movie-info">
+                  <h3>Título de Película</h3>
+                  <p>Descripción breve de la película...</p>
+                  <button class="btn">Ver ahora</button>
+                 </div>
+              </article>
+           </template>
+
   </main>
 
   <footer class="footer">
@@ -73,8 +91,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./src/secret_api_key.js"></script>
-<script src="./src/navigation.js"></script> 
 <script src="./src/main.js"></script>
+<script src="./src/navigation.js"></script> 
+
 
 </body>
 </html>
